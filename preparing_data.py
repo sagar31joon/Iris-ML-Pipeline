@@ -33,10 +33,10 @@ print(x_train, y_train)
 print("Test split : ")
 print(x_test, y_test)
 
-from sklearn.preprocessing import StandardScaler #standardizing data so that all features have mean of 0 and sd of 1
+from sklearn.preprocessing import StandardScaler #standardizing and transforming data so that all features have mean of 0 and sd of 1
 sc = StandardScaler() 
-x_train = sc.fit_transform(x_train) #fit and transform train data
-x_test = sc.transform(x_test) #only transform test data
+x_train = scaler.fit_transform(x_train) #fit and transform train data
+x_test = scaler.transform(x_test) #only transform test data
 
 print("Train split : ")
 print(x_train, y_train)
