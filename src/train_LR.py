@@ -7,30 +7,11 @@ import pickle
 from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import accuracy_score, classification_report, confusion_matrix
 
-df = pd.read_csv("dataset/iris_processed.csv") #loading processed dataset file
-print(df.head())
-
-data_value = df.values #slicing dataset
-x = data_value[:, 0:4]
-y = data_value[:, 4]
-
-x_train, x_test, y_train, y_test = train_test_split(x, y, test_size = 0.2, random_state = 42) #test and train split
-print("Train split X shape:", x_train.shape)
-print("Test split X shape :", x_test.shape)
-
-scaler = StandardScaler() #scaling
-x_train = scaler.fit_transform(x_train) #standardise and transform data
-x_test = scaler.transform(x_test) # only transform data
-
-print("\nScaled TRAIN:")
-print(x_train)
-
-print("\nScaled TEST:")
-print(x_test)
-
-with open("models/scaler.pkl", "wb") as f: #saving scaler model for reuse
-    pickle.dump(scaler, f)
-print("Scaler model saved as 'scaler.pkl'")
+# Load preprocessed data
+x_train = np.load("dataset/x_train.npy")
+x_test = np.load("dataset/x_test.npy")
+y_train = np.load("dataset/y_train.npy")
+y_test = np.load("dataset/y_test.npy")
 
 model_LR = LogisticRegression(max_iter=500) #initialising model
 model_LR.fit(x_train, y_train) #training model
@@ -47,8 +28,6 @@ print("\nLR Accuracy :", accuracy*100)
 print("\nLR Confusion Matrix : \n", cm)
 print("\nLR Classification Report : \n", report)
 
-
-
 model_save = input("Do you want to save this LR model ? (Y/N)")
 match model_save:
     case ("Y" | "y"):
@@ -58,15 +37,4 @@ match model_save:
         print("Model saved as 'model_LR.pkl")
     case ("N" | "n"):
         print("Very well")
-
-
-
-
-
-
-
-
-
-
-
 

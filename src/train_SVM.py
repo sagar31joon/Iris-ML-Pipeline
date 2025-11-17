@@ -7,23 +7,11 @@ import pickle
 from sklearn.svm import SVC
 from sklearn.metrics import accuracy_score, confusion_matrix, classification_report
 
-
-
-df = pd.read_csv("dataset/iris_processed.csv") #loading processed dataset
-print(df.head())
-
-data_value = df.values #slicing dataset
-x = data_value[:, 0:4]
-y = data_value[:, 4]
-
-x_train, x_test, y_train, y_test = train_test_split(x, y, test_size = 0.2, random_state = 42) #train and test split
-
-with open("models/scaler.pkl", "rb") as f: #loading scaler model
-    scaler = pickle.load(f)
-print("Scaler model 'scaler.pkl' loaded")
-
-x_train = scaler.transform(x_train) #scaling the data values
-x_test = scaler.transform(x_test)
+# Load preprocessed data
+x_train = np.load("dataset/x_train.npy")
+x_test = np.load("dataset/x_test.npy")
+y_train = np.load("dataset/y_train.npy")
+y_test = np.load("dataset/y_test.npy")
 
 model_svc = SVC() #initialising SVC model
 model_svc.fit(x_train, y_train) #training model
