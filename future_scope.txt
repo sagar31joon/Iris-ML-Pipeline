@@ -5,7 +5,7 @@ Per-class precision/recall/F1
 Training time
 Inference time
 
-2. Add Model Comparison in a Single File
+✅2. Add Model Comparison in a Single File
 A single script that:
 Loads all three models
 Evaluates them on the same test set
@@ -38,3 +38,5 @@ Sepal width
 Petal length
 Petal width
 And a “Predict” button.
+
+7. Computer Vison
