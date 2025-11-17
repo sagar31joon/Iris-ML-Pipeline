@@ -6,7 +6,7 @@ with open("models/scaler.pkl", "rb") as f: #loading scaler
     scaler = pickle.load(f)
 
 with open("models/model_SVC.pkl", "rb") as f: #loading svc model
-    model_svc = pickle.load(f)
+    model_SVC = pickle.load(f)
 
 #User inputs
 sepal_length = float(input("Enter Sepal length : "))
@@ -21,7 +21,7 @@ user_data = np.array([[sepal_length, sepal_width, petal_length, petal_width]])
 user_data_scaled = scaler.transform(user_data)
 
 #prediction
-prediction = model_svc.predict(user_data_scaled)[0]
+prediction = model_SVC.predict(user_data_scaled)[0]
 
 #decoding
 species_maping = species_maping = {0: "Iris-setosa", 1: "Iris-versicolor", 2: "Iris-virginica"}

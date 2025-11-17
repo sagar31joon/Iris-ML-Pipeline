@@ -1,4 +1,4 @@
-1. Add a Metrics Report for Every Model
+✅ 1. Add a Metrics Report for Every Model 
 Confusion matrix
 Classification report
 Per-class precision/recall/F1

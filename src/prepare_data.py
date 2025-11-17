@@ -25,7 +25,7 @@ print("\nEncoded dataset : ")
 print(df.head())
 print (df.shape) #rows x column numbers
 
-df.to_csv("dataset/iris_encoded.csv", index=False) #creating processed dataset file for model
+df.to_csv("dataset/encoded.csv", index=False) #creating processed dataset file for model
 
 data_value = df.values #slicing dataset
 x = data_value[:, 0:4]
